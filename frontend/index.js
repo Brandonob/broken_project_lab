@@ -23,22 +23,22 @@ const fillUlWithCars = (data, domEl) => {
 const fillSelectBar =  (data, domEl) => {
     data.forEach(user => {
         const option = document.createElement("option");
-        option.innerHTLM = user.name;
+        option.innerHTML = user.name;
         option.value = user.id;
         domEl.appendChild(option)
     })
 }
 
 
-document.addEventListener('DOMContentloaded', () => {
-    let allCars = document.querySelector(".allCars");
+document.addEventListener('DOMContentLoaded', () => {
+    let allCars = document.querySelector("#allCars");
     let select = document.querySelector("select");
     let carsForOneUser = document.querySelector("#carsForOneUser");
     select.addEventListener("change", (e) => {
-        fetchData(`http://localhost:3000/users/${e.target.id}/cars`, fillUlWithCars, carsForOneUser)
+        fetchData(`http://localhost:6000/users/${e.target.id}/cars`, fillUlWithCars, carsForOneUser)
     })
     
     
-    fetchData("http:/localhost:3000/cars", fillUlWithCars, allCars)
-    fetchData("http://localhost:3000/users", fillselectBar, select);
+    fetchData("http:/localhost:6000/cars", fillUlWithCars, allCars)
+    fetchData("http://localhost:6000/users", fillselectBar, select);
 })
